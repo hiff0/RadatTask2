@@ -1,0 +1,214 @@
+{
+    "openapi": "3.0.3",
+    "info": {
+        "title": "CLOUD STORAGE",
+        "version": "0.0.1",
+        "description": "### Radar MMS students cloud storage api"
+    },
+    "servers": [
+        {
+            "url": "/api"
+        }
+    ],
+    "paths": {
+        "/example": {
+            "get": {
+                "tags": [
+                    "Example"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Return hello message",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Message"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "429": {
+                        "description": "Too Many Requests."
+                    }
+                }
+            }
+        },
+        "/example/echo": {
+            "post": {
+                "tags": [
+                    "Example"
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/EchoMessage"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/EchoMessage"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "429": {
+                        "description": "Too Many Requests."
+                    }
+                }
+            }
+        },
+        "/feedback": {
+            "get": {
+                "tags": [
+                    "Feedback"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Return feddback",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Feedback"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "429": {
+                        "description": "Too Many Requests."
+                    }
+                }
+            }
+        },
+        "/feedback/echo": {
+            "post": {
+                "tags": [
+                    "Feedback"
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/EchoFeedback"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/EchoFeedback"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "429": {
+                        "description": "Too Many Requests."
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Message": {
+                "type": "object",
+                "properties": {
+                    "message": {
+                        "type": "string"
+                    },
+                    "date": {
+                        "type": "string",
+                        "format": "Date"
+                    }
+                }
+            },
+            "EchoMessage": {
+                "type": "object",
+                "properties": {
+                    "message": {
+                        "type": "string"
+                    },
+                    "date": {
+                        "type": "string",
+                        "format": "Date",
+                        "readOnly": true
+                    },
+                    "isEcho": {
+                        "type": "boolean",
+                        "default": "true",
+                        "readOnly": true
+                    }
+                }
+            },
+            "Feedback": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "number"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "text": {
+                        "'type": "string"
+                    }
+                }
+            },
+            "EchoFeedback": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "number"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "text": {
+                        "'type": "string"
+                    },
+                    "isEcho": {
+                        "type": "boolean",
+                        "default": "true",
+                        "readOnly": true
+                    }
+                }
+            }
+        }
+    }
+}
